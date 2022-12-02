@@ -3,25 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Http;
-use Illuminate\Http\Request;
-use Omnipay\Omnipay;
-use App\Models\Payment;
 
 class PaypalController extends Controller
 {
-    private $gateway;
-
-    public function __construct()
+    public function index() 
     {
-        $this->gateway = Omnipay::create('PayPal_Rest');
-        $this->gateway->setClientId(config('paypal.client_id'));
-        $this->gateway->setSecret(config('paypal.client_secret'));
-        $this->gateway->setTestMode(true);
-    }
-
-    public function index()
-    {
-        return view('dashboard');
+        return view('payment');
     }
 
     public function bill(Request $request)
@@ -86,6 +73,13 @@ class PaypalController extends Controller
         return 'The user cancelled the payment.';
     }
 
+
+
+
+
+
+
+    
     public function login() 
     {
         $response = Http::get("https://www.sandbox.paypal.com/signin/authorize?flowEntry=static&client_id=" . config('paypal.client_id') . "&scope=openid profile email&redirect_uri=http://127.0.0.1:8000/paypal/token&response_type=code");
