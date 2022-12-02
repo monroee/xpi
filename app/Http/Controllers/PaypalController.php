@@ -3,12 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Request;
+use Omnipay\Omnipay;
+use App\Models\Payment;
+
 
 class PaypalController extends Controller
 {
+    private $gateway;
+
+    public function __construct()
+    {
+        $this->gateway = Omnipay::create('PayPal_Rest');
+        $this->gateway->setClientId(config('paypal.client_id'));
+        $this->gateway->setSecret(config('paypal.client_secret'));
+        $this->gateway->setTestMode(true);
+    }
+
     public function index() 
     {
-        return view('payment');
+        return view('dashboard');
     }
 
     public function bill(Request $request)
