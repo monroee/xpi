@@ -57,7 +57,7 @@
 
             <div id='paypal-button' class="flex items-center justify-center mt-2 mb-5">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                href="{{ route('paypal.index') }}">
+                href="{{ route('paypal.login') }}">
                     <img src="https://www.paypalobjects.com/devdoc/log-in-with-paypal-button.png" alt="">
                 </a>
             </div>
