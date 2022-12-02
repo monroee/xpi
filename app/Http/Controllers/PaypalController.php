@@ -73,13 +73,6 @@ class PaypalController extends Controller
         return 'The user cancelled the payment.';
     }
 
-
-
-
-
-
-
-    
     public function login() 
     {
         $response = Http::get("https://www.sandbox.paypal.com/signin/authorize?flowEntry=static&client_id=" . config('paypal.client_id') . "&scope=openid profile email&redirect_uri=http://127.0.0.1:8000/paypal/token&response_type=code");
